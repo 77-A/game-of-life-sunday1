@@ -1,9 +1,4 @@
-resource "docker_container" "ubuntu" {
-  name  = "foo"
-  image = "${docker_image.ubuntu.latest}"
-}
-
-# Find the latest Ubuntu precise image.
-resource "docker_image" "ubuntu" {
-  name = "ubuntu:precise"
+resource "azurerm_resource_group" "example" {
+  name     = "example"
+  location = "West Europe"
 }
