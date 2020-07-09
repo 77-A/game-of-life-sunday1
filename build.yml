@@ -30,4 +30,16 @@ steps:
 
 - upload: $(Build.ArtifactStagingDirectory)
   artifact: drop
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.SourcesDirectory)'
+  inputs:
+    sourceFolder: $(Agent.TempDirectory)
+    targetFolder: $(Build.SourcesDirectory)
+
+- script: 'terraform init'
+  displayName: 'Terraform init'
+
+- script: 'terraform apply -auto-approve'
+  displayName: 'Terraform apply'
     
